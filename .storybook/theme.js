@@ -31,7 +31,7 @@ export default create({
   inputTextColor: '#313131',
   inputBorderRadius: 5,
 
-  brandTitle: '@idui/react-pagination',
+  brandTitle: 'IDUI',
   brandUrl: 'https://github.com/id-ui',
   brandImage: 'https://avatars0.githubusercontent.com/u/75687767?s=200&v=4',
 });
