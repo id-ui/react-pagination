@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import { withPropsTable } from 'storybook-addon-react-docgen';
 import styled, { css } from 'styled-components';
 import { ifProp } from 'styled-tools';
 import Pagination from './Pagination';
@@ -48,19 +47,13 @@ export default {
     },
     pageGroupsDivider: {
       control: 'text',
-      description: 'pageGroups pageGroupsDivider (element or string)',
+      description: 'page groups divider (element or string)',
       defaultValue: '...',
       table: {
         defaultValue: {
           summary: '...',
         },
       },
-    },
-  },
-  decorators: [withPropsTable],
-  parameters: {
-    props: {
-      propTablesInclude: [Pagination],
     },
   },
 };

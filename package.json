@@ -1,11 +1,12 @@
 {
   "name": "@idui/react-pagination",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Pagination Component",
   "author": "kaprisa57@gmail.com",
   "license": "MIT",
   "repository": "id-ui/react-pagination",
   "main": "dist/index.js",
+  "types": "dist/types.d.ts",
   "source": "src/index.js",
   "engines": {
     "node": ">=10"
@@ -13,7 +14,8 @@
   "scripts": {
     "start": "start-storybook",
     "deploy-storybook": "storybook-to-ghpages",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && yarn run types:copy",
+    "types:copy": "cp ./types.d.ts ./dist",
     "eslint": "eslint ./src/ --ext .js,.jsx --fix",
     "pretty": "npx prettier --write \"**/*.js*\"",
     "lint": "yarn run eslint && yarn run pretty",
@@ -74,7 +76,6 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-test-renderer": "^16.14.0",
-    "storybook-addon-react-docgen": "^1.2.42",
     "styled-components": "^5.2.1",
     "styled-tools": "^1.7.2",
     "webpack": "^5.0.0-rc.6",
