@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo, useCallback } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 function Pagination({
@@ -11,36 +11,32 @@ function Pagination({
   renderPage,
   pageGroupsDivider,
 }) {
-  const handleChange = useCallback(
-    (newPage) => () => {
-      if (newPage !== currentPage) {
-        onChangePage(newPage);
-      }
-    },
-    [currentPage, onChangePage]
-  );
+  if (pagesCount < 2) {
+    return null;
+  }
 
-  const visiblePagesSequenceLength = useMemo(
-    () =>
-      currentPage <= visiblePagesCount ||
-      currentPage > pagesCount - visiblePagesCount
-        ? visiblePagesCount - 1
-        : visiblePagesCount,
-    [currentPage, pagesCount, visiblePagesCount]
-  );
+  const handleChange = (newPage) => () => {
+    if (newPage !== currentPage) {
+      onChangePage(newPage);
+    }
+  };
 
-  const firstVisiblePageInSequenceIndex = useMemo(() => {
+  const visiblePagesSequenceLength =
+    currentPage <= visiblePagesCount ||
+    currentPage > pagesCount - visiblePagesCount
+      ? visiblePagesCount - 1
+      : visiblePagesCount;
+
+  const getFirstVisiblePageInSequenceIndex = () => {
     if (currentPage < visiblePagesCount) {
       return visiblePagesCount - 1;
     } else if (currentPage > pagesCount - visiblePagesCount) {
       return pagesCount - visiblePagesCount + 1;
     }
     return currentPage - 1;
-  }, [currentPage, pagesCount, visiblePagesCount]);
+  };
 
-  if (pagesCount < 2) {
-    return null;
-  }
+  const firstVisiblePageInSequenceIndex = getFirstVisiblePageInSequenceIndex();
 
   return (
     <Fragment>
